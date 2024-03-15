@@ -1,0 +1,9 @@
+# Ignore object files
+*.o
+
+# Ignore VSCODE if exists
+.vscode/*
+
+
+# Ignore executables
+*.elf
