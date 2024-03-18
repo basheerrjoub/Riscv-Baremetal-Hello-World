@@ -15,7 +15,7 @@ Also it uses RISCV toolchain to compile the code and link the script files:
 ## 🏅 Features
 - Custom Implementation for UART serial communication
 - Custom Linker Script not the default one
-- No bios or kernel is needed
+- Neither bios nor kernel is needed
 
 ## 🛠 How to Run?
 
@@ -28,11 +28,19 @@ riscv64-unknown-elf-as hello.s -o hello.o
 ```bash
 riscv64-unknown-elf-ld -T hello.ld hello.o -o kernel.elf
 ```
-- Emulating the object file linked with elf kernel, no bios is needed, using virt machine to reduce hardware practical limitaions, rv64 cpu, memory needed is 128m, no Qemu display is needed, our serial port is the standart I/O
+- Emulating the object file linked with elf kernel, no bios is needed, using virt machine to reduce hardware practical limitaions, rv64 cpu, memory needed is 128m, no Qemu display is needed, our serial port is the standard I/O
 ```bash
 qemu-system-riscv64 -bios none -machine virt -cpu rv64 -smp 4 -m 128m -kernel kernel.elf -display none -serial mon:stdio hello.o
 ```
-- 
+
+
+## TODO
+- [x] Adding UART
+- [x] Adding Multiple Harts
+- [ ] Fixing the racing conditions between harts
+- [ ] Adding A dedicated and seperated UART functionality
+- [ ] Linking Assembly functions with C (Less Assembly :broken_heart:)
+
 
 ## Authors
 
